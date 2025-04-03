@@ -15,7 +15,9 @@ void init_matrix(int size, Matrix *m);
 
 void create_matrix(Matrix *m);
 
-Matrix* multiply_matrix(Matrix *m, float x);
+Matrix* multiply_matrix(Matrix *A, Matrix *B);
+
+void multiply_matrix_digit(Matrix *m, float x);
 
 Matrix* sum_matrix(Matrix *A, Matrix *B);
 

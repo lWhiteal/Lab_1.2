@@ -27,7 +27,7 @@ void create_matrix(Matrix *m) {
 
 Matrix* sum_matrix(Matrix *A, Matrix *B){
 if (A->size == B->size){
-    Matrix *C;
+    Matrix *C = malloc(sizeof(Matrix));
     init_matrix(A->size, C);
     for (int i = 0; i < A->size; i++) {
         for (int j = 0; j < A->size; j++){
@@ -42,13 +42,43 @@ else{
 }
 }
 
-void multiply_matrix(Matrix *m, float x) {
+Matrix* multiply_matrix(Matrix *A, Matrix *B){
+    if (A->size == B->size){
+        Matrix *C = malloc(sizeof(Matrix));
+        init_matrix(A->size, C);
+        for (int i = 0; i < A->size; i++){
+            for (int j = 0; j < A->size; j++){
+                C->data[i][j] = 0;
+            }
+        }
+        for (int i = 0; i < A->size; i++) {
+            for (int j = 0; j < A->size; j++){
+                for (int k = 0; k < A->size; k++){
+                    C->data[i][j] += A->data[i][k] * B->data[k][j];
+                }
+            }
+        }
+        return C;
+    }
+    else{
+        printf("The sizes of the matrices must match\n");
+        return NULL;
+
+    }
+}
+
+void multiply_matrix_digit(Matrix *m, float x) {
     for (int i = 0; i < m->size; i++) {
         for (int j = 0; j < m->size; j++) {
             m->data[i][j] = m->data[i][j] * x;
         }
     }
     
+}
+
+Matrix* AddLinearCombination(Matrix* matrix, int rowIndex, void* alhpas){
+    
+
 }
 
 void print_matrix(Matrix *m){

@@ -4,13 +4,19 @@
 
 
 int main(){
-    Matrix matrix;
+    Matrix A;
+    Matrix B;
+    Matrix *C;
     int size;
     scanf("%d", &size);
-    init_matrix(size, &matrix);
-    create_matrix(&matrix);
-    multiply_matrix(&matrix, 10.0);
-    print_matrix(&matrix);
-    free_matrix(&matrix);
-    
+    init_matrix(size, &A);
+    create_matrix(&A);
+    scanf("%d", &size);
+    init_matrix(size, &B);
+    create_matrix(&B);
+    C = multiply_matrix(&A, &B);
+    print_matrix(C);
+    free_matrix(&A);
+    free_matrix(&B);
+    free_matrix(C);
 }
